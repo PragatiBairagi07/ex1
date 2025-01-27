@@ -69,13 +69,54 @@ Docker rmi -f busybox
 
 
 
+
 lab 5:
 
 FROM alpine
-RUN ask add —update redis
+RUN apk add —update redis
 CMD [“redis-server”]
 
 Docker build . 
 Docker run xxx
-Docker build -t drag/redis:latest .
+Docker build -t prag/redis:latest .
 Docker run prag/redis
+
+
+
+lab5>html>index.html
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            First Doc
+        </title>
+    </head>
+    <body>
+        <p>
+            Hello World
+        </p>
+    </body>
+</html>
+
+lab5>Dockerfile
+FROM nginx:alpine
+COPY html /usr/share/nginx/html
+EXPOSE 80
+
+cmd:
+dir
+docker build -t my-nginx-server .
+docker images
+docker run -d -p 8081:80 my-nginx-server
+docker images
+docker container ls
+docker stop xxx
+docker container ls
+docker container ls -a
+docker remove xxx
+docker container ls -a
+docker images
+docker rmi -f my-nginx-server
+docker images 
+ 
