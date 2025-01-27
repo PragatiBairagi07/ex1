@@ -120,3 +120,54 @@ docker images
 docker rmi -f my-nginx-server
 docker images 
  
+
+lab7:
+
+pipeline {
+    agent any
+    tools {
+        maven 'Maven3' // The name matches the one you have configured in Jenkins
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/jabedhasan21/java-hello-world-with-maven.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                bat 'mvn clean install'  // Running Maven commands using the installed Maven3 tool
+            }
+        }
+        stage('Test') {
+            steps {
+                bat 'mvn test'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deployment steps go here.'
+            }
+        }
+    }
+    post {
+        always {
+            echo 'Pipeline finished.'
+        }
+        success {
+            echo 'Build succeeded!'
+        }
+        failure {
+            echo 'Build failed!'
+        }
+    }
+}
+
+
+
+manage jenkins> plugins > available plugins (maven -> install) > installed plugins(maven)
+dashboard > manage jenkins >tools >maven Installations > maven3>3.9.9>save
+new item> proj name(mavenproject_pipeline)> maven project 
+new item> proj name(maven_projectPipe)> pipeline
+pipeline > (code) > save > build now
+console output > pipeline steps
