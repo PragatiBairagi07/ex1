@@ -1,0 +1,81 @@
+lab 3: 
+
+name: First GitHub Actions # Name of the GitHub Actions workflow.
+
+on: [push] # Trigger this workflow on push events.
+
+jobs:
+  build: # Job name.
+    runs-on: ubuntu-latest # The job runs on the latest version of Ubuntu.
+
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9] # The job runs on Python versions 3.8 and 3.9.
+
+    steps:
+      # Step 1: Check out the repository code into the runner.
+      - uses: actions/checkout@v2
+
+      # Step 2: Set up the specified Python version from the matrix.
+      - name: Setting up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      # Step 3: Install all the dependencies required for the tests.
+      - name: Installing all the dependencies
+        run: |
+          python -m pip install --upgrade pip # Upgrade pip.
+          pip install pytest
+
+      # Step 4: Run the tests using pytest.
+      - name: Running tests
+        run: |
+          python -m pytest addition.py
+
+
+
+def add(a,b):
+    return a+b
+
+def test_add():
+    assert add(1,2) == 3
+    assert add(2,2) == 4
+
+
+
+
+lab 4;
+Docker images
+Docker ps
+Docker pull nginx
+Docker images
+Docker container ls
+Docker run -d -p 8080:80 nginx
+Docker container ls -a
+Docker stop container xxx
+Docker container ls
+Docker rmi -f nginx
+Docker images
+
+Docker pull busybox
+Docker run busybox
+Docker run busybox echo hello
+Docker container ls
+Docker container ls -a
+Docker remove xxx
+Docker rmi -f busybox
+
+
+
+
+lab 5:
+
+FROM alpine
+RUN ask add —update redis
+CMD [“redis-server”]
+
+Docker build . 
+Docker run xxx
+Docker build -t drag/redis:latest .
+Docker run prag/redis
