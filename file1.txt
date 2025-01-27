@@ -42,6 +42,26 @@ def test_add():
     assert add(1,2) == 3
     assert add(2,2) == 4
 
+gitbash> 
+git init
+git status
+git add .
+git commit -m "first commit"
+
+git remote add origin https://github.com/PragatiBairagi07/ll3.git
+git push -u origin main
+
+settings>actions>runner>new...
+windows>
+mkdir actions-runner 
+cd actions-runner/
+curl -L -o actions-runner-win-x64.......zip https:.....zip (don't include outfile...)
+unzip actions-runner-win-...zip
+ls
+configure> ./config.sh --url https://github.com/PragatiBairagi07/ll3 --token BNLYAA63N7TWPY2TTIIVQ7LHS42XU
+
+actions(github)> view(3 dots)
+
 
 
 
